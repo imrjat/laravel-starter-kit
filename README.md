@@ -3,7 +3,7 @@
 
 Please let me know your feedback and comments.
 
-Laravel 9.x requires a minimum PHP version of 8.0. for more information visit -  https://laravel.com/docs/9.x/releases
+**Laravel 9.x requires a minimum PHP version of 8.0.** for more information visit -  https://laravel.com/docs/9.x/releases
 
 
 # Reporting a Vulnerability
