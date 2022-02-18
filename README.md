@@ -7,7 +7,7 @@ Please let me know your feedback and comments.
 
 
 # Reporting a Vulnerability
-If you discover any security related issues, please send an e-mail to Nasir Khan Saikat via imrjat@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please send an e-mail to Rahul Jat via imrjat@gmail.com instead of using the issue tracker.
 
 # Demo
 Check the following demo project. It is just a straight installation of the project without any modification.
