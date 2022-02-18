@@ -1,0 +1,35 @@
+@extends('admin.layouts.master')
+@section('content')
+@section('title', 'Create %%modelName%%')
+<div class="content-wrapper">
+    <section class="content-header">
+ 
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                              @can('remove-create')
+                            <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" class="btn btn-info btn-sm text-white" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
+                            @endcan
+                            Create New %%modelName%%</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%') }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                @include ('%%viewTemplateDir%%.form', ['formMode' => 'create'])
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@endsection
+
+

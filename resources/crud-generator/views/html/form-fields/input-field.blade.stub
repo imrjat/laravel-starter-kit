@@ -1,0 +1,2 @@
+<input placeholder="Enter %%itemName%%" name="%%itemName%%" value="{{ $%%crudNameSingular%%->%%itemName%% ?? old('%%itemName%%')}}"  type="%%fieldType%%" class=" @error('%%itemName%%') is-invalid @enderror form-control"  >
+                                              

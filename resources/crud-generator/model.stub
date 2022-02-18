@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+{{useSoftDeletes}}
+
+class DummyClass extends Model
+{
+    {{softDeletes}}
+
+    protected $guarded=['id','created_at','updated_at','deleted_at'];
+}

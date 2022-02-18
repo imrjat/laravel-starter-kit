@@ -1,0 +1,57 @@
+@extends('admin.layouts.master')
+@section('content')
+@section('title', 'Show  %%modelName%%')
+
+<div class="content-wrapper">
+    <section class="content-header">
+        @include('admin.layouts.alert')
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <h1> %%modelName%% </h1>
+                </div>
+                <div class="col-sm-3">
+                    @can('remove-edit')
+                    <a class="btn btn-success btn-sm" href="{{ url('/%%routeGroup%%%%viewName%%') }}">Back</a>
+                    @endcan
+                    @can('remove-edit')
+                        <a class="btn btn-primary btn-sm" href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}">Edit</a>
+                    @endcan
+                    @can('remove-delete')
+                        <form method="POST" action="{{ url('%%routeGroup%%%%crudName%%' . '/' . $%%crudNameSingular%%->%%primaryKey%%) }}" accept-charset="UTF-8" style="display:inline">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-danger btn-sm" title="Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                            </form>
+                    @endcan
+                </div>
+                <div class="col-sm-5">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Show Table</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>ID</th><td>{{ $%%crudNameSingular%%->%%primaryKey%% }}</td>
+                                    </tr>
+                                    %%formBodyHtmlForShowView%%
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@endsection
