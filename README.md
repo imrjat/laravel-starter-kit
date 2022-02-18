@@ -2,6 +2,7 @@
 **Laravel Starter** is a Laravel 8.x based simple starter project with roles and permissions and CRUD generator. It can be used to build all type of applications. Most of the commonly needed features like Authentication, Application Backend, Logviewer are available here. It is modular, so you can use this project as a base and build your own modules. You can use the same module in any of the `Laravel Starter` based projects. New features and functionalities are being added on a regular basis.
 
 Please let me know your feedback and comments.
+
 Laravel 9.x requires a minimum PHP version of 8.0. for more information visit -  https://laravel.com/docs/9.x/releases
 
 
