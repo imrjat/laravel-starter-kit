@@ -1,10 +1,9 @@
-# Laravel Starter Kit By Rahul Jat (based on Laravel 9.x)
-**Laravel Starter** is a Laravel 8.x based simple starter project with roles and permissions and CRUD generator. It can be used to build all type of applications. Most of the commonly needed features like Authentication, Application Backend, Logviewer are available here. It is modular, so you can use this project as a base and build your own modules. You can use the same module in any of the `Laravel Starter` based projects. New features and functionalities are being added on a regular basis.
+# Laravel 9.x - Multi Authentication API with Example
+**A Laravel 9.x with Bootstrap 4.x project.** In this Starter Kit, I would like share with you build a multiple guards authentication api in laravel 9. I have create multiple authentication api in laravel 9. This project will give you multiple authentication guard drivers (including API) in laravel 9. how to setup multi-auth for laravel 9 apis..
 
 Please let me know your feedback and comments.
 
-**Laravel 9.x requires a minimum PHP version of 8.0.** for more information visit -  https://laravel.com/docs/9.x/releases
-
+**Laravel 9.x requires a minimum PHP version of 8.1.** for more information visit -  https://laravel.com/docs/9.x/releases
 
 # Reporting a Vulnerability
 If you discover any security related issues, please send an e-mail to Rahul Jat via imrjat@gmail.com instead of using the issue tracker.
@@ -12,7 +11,7 @@ If you discover any security related issues, please send an e-mail to Rahul Jat 
 # Demo
 Check the following demo project. It is just a straight installation of the project without any modification.
 
-Demo URL: laravel8.rahuljat.in
+Demo URL: rahuljat.in
 
 ```
 User: rahuljat@firsteconomy.com
@@ -21,11 +20,34 @@ Pass: 12345678
 
 For additional demo data you may use the following command. By using this you can  update the `posts,setting,user` table and insert new demo data. `--fresh` option will truncate the tables, without this command new set to data will be inserted only.
 
-```
-
-php artisan migrate:fresh --seed
+### Installation Instructions
 
 ```
+1. Run `git clone https://github.com/coderahuljat/laravel-9-starter-kit.git`
+```
+```
+2. From the projects root run `cp .env.example .env`
+3. Configure your `.env` file
+```
+```
+4. Run `composer install`
+```
+```
+5.php artisan migrate:fresh --seed
+```
+```
+6. Link storage directory: `php artisan storage:link`
+```
+```
+7. You may create a virtualhost entry to access the application or run `php artisan serve` from the project root and visit `http://127.0.0.1:8000`
+```
+
+##### Seeded Users
+
+|Email|Password|Access|
+|:------------|:------------|:------------|
+|rahuljat@firsteconomy.com|12345678|Admin Access|
+
 
 # Custom Commands
 
@@ -51,7 +73,7 @@ It is a modular application, and a number of modules are installed by default. I
 
 ## Core Features
 
-* User Authentication
+* User Authentication with API
 * Setting
 * User Profile with Avatar
   * Separate User Profile table
@@ -136,22 +158,6 @@ It is a modular application, and a number of modules are installed by default. I
 * Log Viewer
 * Notification
   * Dashboard and details view
-
-
-# User Guide
-
-## Installation
-
-Follow the steps mentioned below to install and run the project.
-
-1. Clone or download the repository
-2. Go to the project directory and run `composer install`
-3. Create `.env` file by copying the `.env.example`. You may use the command to do that `cp .env.example .env`
-4. Update the database name and credentials in `.env` file
-5. Run the command `php artisan migrate --seed`
-6. Link storage directory: `php artisan storage:link`
-7. You may create a virtualhost entry to access the application or run `php artisan serve` from the project root and visit `http://127.0.0.1:8000`
-
 ## Icons
 FontAwesome & CoreUI Icons, two different font icon library is installed for the Backend theme and only FontAwesome for the Frontend. For both of the cases we used the free version. You may install the pro version separately for your own project.
 
@@ -159,4 +165,3 @@ FontAwesome & CoreUI Icons, two different font icon library is installed for the
 
 
 # Screenshots will be updated soon
-
