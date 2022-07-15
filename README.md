@@ -18,29 +18,27 @@ Pass: 12345678
 For additional demo data you may use the following command. By using this you can  update the `posts,setting,user` table and insert new demo data. `--fresh` option will truncate the tables, without this command new set to data will be inserted only.
 
 ### Installation Instructions
-1. Run
+Run
 ```
 git clone https://github.com/coderahuljat/laravel-9-starter-kit.git
 ```
-2. From the projects root run 
+From the projects root run 
 ```
 cp .env.example .env
 ```
-3. Configure your `.env` file
-4. Run
+Configure your `.env` file
 ```
 composer install
 ```
 ```
 php artisan migrate:fresh --seed
 ```
-6. Link storage directory:
+Link storage directory:
 ```
  php artisan storage:link
 ```
-```
-7. You may create a virtualhost entry to access the application or run `php artisan serve` from the project root and visit `http://127.0.0.1:8000`
-```
+You may create a virtualhost entry to access the application or run `php artisan serve` from the project root and visit `http://127.0.0.1:8000`
+
 
 ##### Seeded Users
 
