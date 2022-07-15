@@ -33,6 +33,11 @@ composer install
 ```
 php artisan migrate:fresh --seed
 ```
+Clear All Cache:
+```
+ php artisan optimize:clear
+```
+
 Link storage directory:
 ```
  php artisan storage:link
@@ -45,19 +50,6 @@ You may create a virtualhost entry to access the application or run `php artisan
 |Email|Password|Access|
 |:------------|:------------|:------------|
 |rahuljat@firsteconomy.com|12345678|Admin Access|
-
-
-# Custom Commands
-
-We have created a number of custom commands for the project. The commands are listed below with a brief about the use of it.
-
-## Clear All Cache
-
-`php artisan optimize:clear`
-
-this is a shortcut command clear all cache including config, route and more
-apply the code style fix by this command.
-
 
 # Features
 
