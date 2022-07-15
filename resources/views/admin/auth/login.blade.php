@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
+@include('admin.layouts.favicon')
+<meta name="theme-color" content="#ffffff">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ get_from_setting('app_name') }} | Log in </title>
+    <title>RahulJatAdmin | Log in </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -28,16 +31,16 @@
             margin-top: auto;
             margin-bottom: auto;
         }
-  .logo{
-            width: 85%;
-        }
-        @media screen and (max-width: 767px) {
-             .logo{
-            width: 45%;
-        }
+
+        .logo {
+            width: 200px;
         }
 
-      
+        @media screen and (max-width: 767px) {
+            /* .logo{
+            width: 45%;
+        } */
+        }
     </style>
 </head>
 
@@ -46,27 +49,23 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                {{-- <a href="{{url('/')}}" class="h1"><b>{{get_from_setting('app_name')}}</b>LTE</a> --}}
                 <div class="row">
-                    <div class="col-md-4">
-                        <img class="logo" src="{{ asset(get_from_setting('logo')) }}" alt="">
+                    <div class="col-md-12">
+                        <img class="logo" src="{{ asset(App\Helpers\GeneralHelpers::get_from_setting('login-screen-logo')) }}" alt="">
                     </div>
-                    <div class="col-md-8 text-center  my-auto">
-                        <b>{{ get_from_setting('app_name') }}</b>
-
-                    </div>
+                 
                 </div>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
                 @error('email')
-                    <p class="feedback">{{ $message }}</p>
+                <p class="feedback">{{ $message }}</p>
                 @enderror
 
                 @error('password')
-                    <p class="feedback">{{ $message }}</p>
+                <p class="feedback">{{ $message }}</p>
                 @enderror
-                <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                <form class="login100-form validate-form" method="POST" action="{{ route('admin_login') }}">
                     @csrf
                     <div class="input-group mb-3">
                         <input name="email" type="email" class="form-control @error('email')  error @enderror "

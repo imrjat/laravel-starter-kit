@@ -46,15 +46,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-
-
-
-
-
-
-
-
     // Logger
     protected static $logFillable = true;
     protected static $logAttributes = ['name', 'email', 'soft_password'];

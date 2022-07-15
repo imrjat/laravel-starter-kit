@@ -28,12 +28,7 @@ class SettingPolicy
         return $user->hasPermissionTo('setting-viewAny');
     }
 
-    public function test(User $user)
-    {
-     
-        
-        dd(11111);
-    }
+
     /**
      * Determine whether the user can view the model.
      *

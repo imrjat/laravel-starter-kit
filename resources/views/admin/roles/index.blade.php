@@ -14,7 +14,7 @@
                     <ol class="breadcrumb float-sm-right">
                         @can('role-create')
                             <div>
-                                <a href="{{  url('/roles/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
+                                <a href="{{  url('admin/roles/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
                                     type="button"> <i class="fa fa-plus"></i> Add new
                                     Roles</a>
                             </div>
@@ -66,13 +66,13 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>
-                                    <a href="{{ url('/roles/' . $item->id) }}" title="View role"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                    <a href="{{ url('/admin/roles/' . $item->id) }}" title="View role"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                     @can('role-edit')
-                                    <a href="{{ url('/roles/' . $item->id . '/edit') }}" title="Edit role"><button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button></a>
+                                    <a href="{{ url('/admin/roles/' . $item->id . '/edit') }}" title="Edit role"><button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button></a>
                                     @endcan
 
                                     @can('role-delete')
-                                    <form method="POST" action="{{ url('/roles' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                    <form method="POST" action="{{ url('/admin/roles' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <button type="submit"  class="btn btn-danger btn-sm" title="Delete role" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

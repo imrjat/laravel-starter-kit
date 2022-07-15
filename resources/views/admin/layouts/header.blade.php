@@ -1,7 +1,9 @@
 <head>
+  @include('admin.layouts.favicon')
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title') {{ get_from_setting('app_name') }}</title>
+  <title>@yield('title') {{ App\Helpers\GeneralHelpers::get_from_setting('app_name') }}</title>
 
 
 	<link rel="icon" type="image/png" href="{{asset('auth/images/icons/favicon.ico')}}"/>

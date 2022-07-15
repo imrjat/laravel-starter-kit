@@ -523,7 +523,7 @@
                         <span class="users-list-date">12 Jan</span>
                       </li>
                       <li>
-                        <img src="{{asset(get_from_setting('user_logo'))}}" alt="User Image">
+                        <img src="{{asset('dist/img/user3-128x128.jpg')}}" alt="User Image">
                         <a class="users-list-name" href=""#">Alexander</a>
                         <span class="users-list-date">13 Jan</span>
                       </li>

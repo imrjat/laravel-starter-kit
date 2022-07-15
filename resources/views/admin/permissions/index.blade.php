@@ -12,13 +12,13 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('user-create')
+                        {{-- @can('user-create')
                             <div>
                                 <a href="{{  url('/permissions/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
                                     type="button"> <i class="fa fa-plus"></i> Add new
                                     Permissions</a>
                             </div>
-                        @endcan
+                        @endcan --}}
                     </ol>
                 </div>
             </div>
@@ -55,7 +55,8 @@
                             <table class="table table-head-fixed text-nowrap">
                                      <thead>
                         <tr>
-                            <th>#</th><th>Permission Name</th><th>Actions</th>
+                            <th>#</th><th>Permission Name</th>
+                            {{-- <th>Actions</th> --}}
 
                         </tr>
                     </thead>
@@ -66,7 +67,7 @@
                                 <td>{{ (($permissions->currentPage() - 1 ) * $permissions->perPage() ) + $loop->iteration }}</td>
 
                                 <td>{{ $item->name }}</td>
-                                <td>
+                                {{-- <td>
                                     <a href="{{ url('/permissions/' . $item->id) }}" title="View permission"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                     @can('permission-edit')
                                     <a href="{{ url('/permissions/' . $item->id . '/edit') }}" title="Edit permission"><button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button></a>
@@ -80,7 +81,7 @@
                                     </form>
                                     @endcan
 
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
 

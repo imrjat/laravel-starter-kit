@@ -61,17 +61,28 @@
                                         @endcan
                                         
                                         @can('remove-edit')
-                                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-sm"><i class="fas fa-pen" aria-hidden="true"></i> Edit</button></a>
                                         @endcan
 
                                         @can('remove-delete')
                                         <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%' . '/' . $item->%%primaryKey%%) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
-                                            <button type="submit"  class="btn btn-danger btn-sm" title="Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            <input type="hidden" name="is_force_delete" value="0">
+
+                                            <button type="submit"  class="btn btn-danger btn-sm" title="Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                                         </form>
                                         @endcan
 
+                                    @can('remove-forceDelete')
+                                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%' . '/' . $item->%%primaryKey%%) }}" accept-charset="UTF-8" style="display:inline">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="is_force_delete" value="1">
+
+                                            <button type="submit"  class="btn btn-danger btn-sm" title="Force Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i>Force Delete</button>
+                                        </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

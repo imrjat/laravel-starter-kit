@@ -15,7 +15,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                       <form method="POST" action="{{ url('/settings/update_records') }}" enctype="multipart/form-data">
+                       <form method="POST" action="{{ route('update_records') }}" enctype="multipart/form-data">
                            
                             {{ csrf_field() }}
                                 @include ('admin.settings.form', ['formMode' => 'edit'])

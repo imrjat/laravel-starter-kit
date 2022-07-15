@@ -15,7 +15,7 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name')->nullable()->index();
             $table->string('label')->nullable();
             $table->longText('value')->nullable();
             $table->enum('type',['string','text','number','file'])->default('string');

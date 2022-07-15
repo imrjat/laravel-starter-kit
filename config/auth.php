@@ -42,9 +42,28 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
-            'hash' => false,
+        ],
+
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
+
+        'employee-api' => [
+            'driver' => 'passport',
+            'provider' => 'employees',
+        ],
+
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'companies',
+        ],
+
+        'company-api' => [
+            'driver' => 'passport',
+            'provider' => 'companies',
         ],
     ],
 
@@ -70,11 +89,17 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Employee::class,
+        ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Company::class,
+        ],
+
     ],
 
     /*
@@ -95,6 +120,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'employees' => [
+            'provider' => 'employees',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

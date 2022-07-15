@@ -10,9 +10,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('remove-create')
+                        @can('roll-create')
                         <div>
-                            <a href="{{ url('/roles') }}" class="btn btn-info btn-sm text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
+                            <a href="{{ url('/admin/roles') }}" class="btn btn-info btn-sm text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
                         </div>
                         @endcan
                     </ol>
@@ -30,7 +30,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                       <form method="POST" action="{{ url('/roles/' . $role->id) }}" enctype="multipart/form-data">
+                       <form method="POST" action="{{ url('/admin/roles/' . $role->id) }}" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
                                 @include ('admin.roles.form', ['formMode' => 'edit'])

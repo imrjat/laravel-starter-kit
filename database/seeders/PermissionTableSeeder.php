@@ -45,16 +45,6 @@ class PermissionTableSeeder extends Seeder
             'permission-update',
             'permission-store',
 
-            'post-viewAny',
-            'post-create',
-            'post-edit',
-            'post-delete',
-            'post-view',
-            'post-restore',
-            'post-forceDelete',
-            'post-update',
-            'post-store',
-
             'setting-viewAny',
             'setting-delete',
             'setting-view',
@@ -65,20 +55,12 @@ class PermissionTableSeeder extends Seeder
             'setting-update',
             'setting-store',
 
-            'city-viewAny',
-            'city-delete',
-            'city-view',
-            'city-edit',
-            'city-create',
-            'city-restore',
-            'city-forceDelete',
-            'city-update',
-            'city-store',
+         
 
         ];
 
         foreach ($data as $permission) {
-             Permission::create(['name' => $permission]);
+             Permission::updateOrCreate(['name' => $permission],['name' => $permission]);
         }
     }
 }
