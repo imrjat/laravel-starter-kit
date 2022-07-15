@@ -5,9 +5,6 @@ Please let me know your feedback and comments.
 
 **Laravel 9.x requires a minimum PHP version of 8.1.** for more information visit -  https://laravel.com/docs/9.x/releases
 
-# Reporting a Vulnerability
-If you discover any security related issues, please send an e-mail to Rahul Jat via imrjat@gmail.com instead of using the issue tracker.
-
 # Demo
 Check the following demo project. It is just a straight installation of the project without any modification.
 
@@ -164,4 +161,6 @@ FontAwesome & CoreUI Icons, two different font icon library is installed for the
 * **FontAwesome** - https://fontawesome.com/icons?d=gallery&m=free
 
 
-# Screenshots will be updated soon
+
+# Reporting a Vulnerability
+If you discover any security related issues, please send an e-mail to Rahul Jat via imrjat@gmail.com instead of using the issue tracker.
