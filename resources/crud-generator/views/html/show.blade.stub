@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'Show  %%modelName%%')
+@section('title', 'Show %%modelName%%')
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -11,18 +11,24 @@
                     <h1> %%modelName%% </h1>
                 </div>
                 <div class="col-sm-3">
-                    @can('remove-edit')
-                    <a class="btn btn-success btn-sm" href="{{ url('/%%routeGroup%%%%viewName%%') }}">Back</a>
+
+                    <a class="btn btn-success btn-sm" href="{{ route('%%viewName%%.index') }}"> <i
+                            class="fa fa-arrow-left"> </i> Back</a>
+
+                    @can('%%viewName%%-edit')
+                    <a class="btn btn-primary btn-sm"
+                        href="{{ route('%%viewName%%', $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}">Edit</a>
                     @endcan
-                    @can('remove-edit')
-                        <a class="btn btn-primary btn-sm" href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}">Edit</a>
-                    @endcan
-                    @can('remove-delete')
-                        <form method="POST" action="{{ url('%%routeGroup%%%%crudName%%' . '/' . $%%crudNameSingular%%->%%primaryKey%%) }}" accept-charset="UTF-8" style="display:inline">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger btn-sm" title="Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                            </form>
+                    @can('%%viewName%%-delete')
+                    <form method="POST"
+                        action="{{ route('%%viewName%%', $%%crudNameSingular%%->%%primaryKey%%) }}"
+                        accept-charset="UTF-8" style="display:inline">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-danger btn-sm" title="Delete %%modelName%%"
+                            onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash"
+                                aria-hidden="true"></i> Delete</button>
+                    </form>
                     @endcan
                 </div>
                 <div class="col-sm-5">
@@ -42,7 +48,8 @@
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $%%crudNameSingular%%->%%primaryKey%% }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $%%crudNameSingular%%->%%primaryKey%% }}</td>
                                     </tr>
                                     %%formBodyHtmlForShowView%%
                                 </tbody>

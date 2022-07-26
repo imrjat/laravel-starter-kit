@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Spatie\Permission\Models\Permission;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -59,8 +61,18 @@ class PermissionTableSeeder extends Seeder
 
         ];
 
+     
         foreach ($data as $permission) {
-             Permission::updateOrCreate(['name' => $permission],['name' => $permission]);
+            Permission::updateOrCreate(['name' => $permission]);
         }
+
+        $user = User::find(1);
+        $role = Role::find(1);
+
+        $permissions = Permission::pluck('id', 'id')->all();
+
+        $role->syncPermissions($permissions);
+
+        $user->assignRole([$role->id]);
     }
 }

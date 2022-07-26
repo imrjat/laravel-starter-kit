@@ -1,10 +1,8 @@
 <div class="row">
-%%formFieldsHtml%%
+    %%formFieldsHtml%%
 </div>
 <div class="row">
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
     </div>
 </div>
-
-

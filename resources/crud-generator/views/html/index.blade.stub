@@ -11,12 +11,13 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('remove-create')
-                            <div>
-                                <a href="{{  url('/%%routeGroup%%%%viewName%%/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
-                                    type="button"> <i class="fa fa-plus"></i> Add new
-                                    %%crudNameCap%%</a>
-                            </div>
+                        @can('%%viewName%%-create')
+                        <div>
+                            <a href="{{  route('%%viewName%%.create') }}"
+                                class="btn btn-primary btn-sm text-white mb-0 me-0" type="button"> <i
+                                    class="fa fa-plus"></i> Add new
+                                %%crudNameCap%%</a>
+                        </div>
                         @endcan
                     </ol>
                 </div>
@@ -31,16 +32,18 @@
                         <div class="card-header">
                             <h3 class="card-title">%%crudNameCap%% List</h3>
                             <div class="card-tools">
-                                    {!! Form::open(['method' => 'GET', 'url' => '/%%routeGroup%%%%viewName%%', 'role' => 'search'])  !!}
+                                {!! Form::open(['method' => 'GET', 'url' => route('%%viewName%%.index'), 'role' =>
+                                'search']) !!}
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                                    <input type="text" name="search" class="form-control float-right"
+                                        placeholder="Search">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
                                 </div>
-                                    {!! Form::close() !!}
+                                {!! Form::close() !!}
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0" style="height: 600px;">
@@ -51,45 +54,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                        @foreach($%%crudName%% as $item)
-                                <tr>
-                                    <td>{{ (($%%crudName%%->currentPage() - 1 ) * $%%crudName%%->perPage() ) + $loop->iteration }}</td>
-                                    %%formBodyHtml%%
-                                    <td>
-                                        @can('remove-view')
-                                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%%) }}" title="View %%modelName%%"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                        @endcan
-                                        
-                                        @can('remove-edit')
-                                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-sm"><i class="fas fa-pen" aria-hidden="true"></i> Edit</button></a>
-                                        @endcan
-
-                                        @can('remove-delete')
-                                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%' . '/' . $item->%%primaryKey%%) }}" accept-charset="UTF-8" style="display:inline">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="is_force_delete" value="0">
-
-                                            <button type="submit"  class="btn btn-danger btn-sm" title="Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                                        </form>
-                                        @endcan
-
-                                    @can('remove-forceDelete')
-                                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%' . '/' . $item->%%primaryKey%%) }}" accept-charset="UTF-8" style="display:inline">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="is_force_delete" value="1">
-
-                                            <button type="submit"  class="btn btn-danger btn-sm" title="Force Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i>Force Delete</button>
-                                        </form>
-                                        @endcan
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                           <br>
-                        <div class="pagination-wrapper"> {!! $%%crudName%%->appends(['search' => Request::get('search')])->render() !!} </div>
+                                    @foreach($%%crudName%% as $item)
+                                    <tr>
+                                        <td>{{ (($%%crudName%%->currentPage() - 1 ) * $%%crudName%%->perPage() ) +
+                                            $loop->iteration }}</td>
+                                        %%formBodyHtml%%
+                                        <td>
+                                            @can('%%viewName%%-view')
+                                            <a href="{{  route('%%viewName%%.show', $item->%%primaryKey%%) }}"
+                                                title="View %%modelName%%"><button class="btn btn-info btn-sm"><i
+                                                        class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            @endcan
+                                            
+                                            @can('%%viewName%%-edit')
+                                            <a class="btn btn-primary btn-sm"
+                                                href="{{ route('%%viewName%%.edit', $item->%%primaryKey%% ) }}">Edit</a>
+                                            @endcan
+                                            @can('%%viewName%%-delete')
+                                            <form method="POST"
+                                                action="{{ route('%%viewName%%.destroy', $item->%%primaryKey%%) }}"
+                                                accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete %%modelName%%"
+                                                    onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash"
+                                                        aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                            @endcan
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <br>
+                            <div class="pagination-wrapper"> {!! $%%crudName%%->appends($_GET)->links() !!} </div>
                         </div>
                     </div>
                 </div>
