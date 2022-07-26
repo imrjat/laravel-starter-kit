@@ -14,21 +14,19 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
+        Setting::insert([
 
-   
-            Setting::insert([
-                
-                ['name' =>'app_name','label'=>'APP NAME','value'=> 'Rahul Jat','type' => 'string'  ],
-                ['name' =>'user_logo','label'=>'User Logo','value'=> 'dist/img/user3-128x128.jpg','type' => 'file'  ],
-                ['name' =>'login-screen-logo','label'=>'Login screen logo','value'=> 'auth/images/img-01.png','type' => 'file'  ],
-                ['name' =>'logo','label'=>'Logo','value'=> 'dist/img/AdminLTELogo.png','type' => 'file'  ],
-                ['name' =>'pre-loader','label'=>'Loader','value'=> 'dist/img/AdminLTELogo.png','type' => 'file'  ],
+            ['name' => 'app_name', 'label' => 'APP NAME', 'value' => 'Rahul Jat', 'type' => 'string'],
+            ['name' => 'user_logo', 'label' => 'User Logo', 'value' => 'dist/img/user3-128x128.jpg', 'type' => 'file'],
+            ['name' => 'login-screen-logo', 'label' => 'Login screen logo', 'value' => 'auth/images/img-01.png', 'type' => 'file'],
+            ['name' => 'logo', 'label' => 'Logo', 'value' => 'dist/img/AdminLTELogo.png', 'type' => 'file'],
+            ['name' => 'pre-loader', 'label' => 'Loader', 'value' => 'dist/img/AdminLTELogo.png', 'type' => 'file'],
 
-                ['name' =>'favicon','label'=>'Favicon','value'=> 'auth/images/icons/favicon.ico','type' => 'file'  ],
-                ['name' =>'facebook_url','label'=>'Facebook url','value'=> '','type' => 'string'  ],
-                ['name' =>'twitter_url','label'=>'Twitter url','value'=> '','type' => 'string'  ],
-                ['name' =>'youtube_url','label'=>'Youtube url','value'=> '','type' => 'string'  ],
+            ['name' => 'favicon', 'label' => 'Favicon', 'value' => 'auth/images/icons/favicon.ico', 'type' => 'file'],
+            ['name' => 'facebook_url', 'label' => 'Facebook url', 'value' => '', 'type' => 'string'],
+            ['name' => 'twitter_url', 'label' => 'Twitter url', 'value' => '', 'type' => 'string'],
+            ['name' => 'youtube_url', 'label' => 'Youtube url', 'value' => '', 'type' => 'string'],
 
-            ]);
+        ]);
     }
 }

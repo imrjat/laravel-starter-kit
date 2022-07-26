@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\GeneralHelpers;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\StoreSettingRequest;
 use App\Http\Requests\UpdateSettingRequest;
 use App\Models\Setting;
@@ -17,19 +16,16 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function __construct()
     {
         $this->authorizeResource(Setting::class);
     }
 
-
     public function index()
     {
         $settings = Setting::all();
 
-        return view('admin.settings.edit',compact('settings'));
+        return view('admin.settings.edit', compact('settings'));
 
         // return view('admin.settings.index',compact('settings'));
     }
@@ -43,7 +39,6 @@ class SettingController extends Controller
     {
         //
         return view('admin.settings.create');
-
     }
 
     /**
@@ -78,8 +73,7 @@ class SettingController extends Controller
     {
         //
 
-        return view('admin.settings.edit',compact('setting'));
-
+        return view('admin.settings.edit', compact('setting'));
     }
 
     /**
@@ -91,28 +85,27 @@ class SettingController extends Controller
      */
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
-    
     }
 
     public function update_records(Request $request)
     {
         $requestData = $request->except('_token');
         foreach ($requestData as $name => $value) {
-           $setting =  Setting::where('name', $name)->first();
-           if($setting){
+            $setting = Setting::where('name', $name)->first();
+            if ($setting) {
                 if ($request->hasFile($name)) {
-                    $file =  $request->file($name);
-                    $path = 'images/system_images/';                    
+                    $file = $request->file($name);
+                    $path = 'images/system_images/';
                     $file_name = time();
                     $data['value'] = GeneralHelpers::crop_upload_file($file, $path, $file_name);
                     $setting->update($data);
-
                 } else {
-                    $data['value']=$value;
+                    $data['value'] = $value;
                     $setting->update($data);
                 }
-           }
+            }
         }
+
         return redirect()->route('settings.index')
         ->with('success', 'Setting updated successfully.');
     }

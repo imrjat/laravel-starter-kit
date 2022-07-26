@@ -3,8 +3,6 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,21 +32,17 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-
     public function register()
     {
         $this->renderable(function (Throwable $e, $request) {
             if ($request->is('api/*')) {
-            
                 $response = [
                     'success' => false,
-                    'message' =>   $e->getMessage() && $e->getMessage() != "" ? $e->getMessage() : 'Something went wrong'
+                    'message' => $e->getMessage() && $e->getMessage() != '' ? $e->getMessage() : 'Something went wrong',
                 ];
-        
-                return response()->json($response,  404);
+
+                return response()->json($response, 404);
             }
         });
     }
-
-    
 }

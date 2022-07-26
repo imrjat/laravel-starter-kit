@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Resources\Hobby;
+
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class HobbyCollection extends ResourceCollection
@@ -15,7 +16,7 @@ class HobbyCollection extends ResourceCollection
     {
         return parent::toArray($request);
     }
- 
+
     /**
      * Get additional data that should be returned with the resource array.
      *
@@ -24,14 +25,9 @@ class HobbyCollection extends ResourceCollection
      */
     public function with($request)
     {
-
-
         return [
-            'success'=>true,
-            'message'=>'Hobbies fetched successfully',
+            'success' => true,
+            'message' => 'Hobbies fetched successfully',
         ];
     }
-
-
-
 }

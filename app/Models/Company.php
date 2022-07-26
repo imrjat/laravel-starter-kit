@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class Company extends Authenticatable
 {
@@ -15,7 +15,6 @@ class Company extends Authenticatable
         'name',
         'email',
         'password',
-        'status'
+        'status',
     ];
-
 }

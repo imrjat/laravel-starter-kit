@@ -1,10 +1,11 @@
 <?php
-namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use DB;
 use Hash;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Spatie\Permission\Models\Role;
@@ -16,12 +17,12 @@ class UserController extends Controller
      *
      * @return void
      */
-    function __construct()
+    public function __construct()
     {
-         $this->middleware('permission:user-viewAny|user-create|user-edit|user-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:user-create', ['only' => ['create','store']]);
-         $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:user-viewAny|user-create|user-edit|user-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -31,18 +32,16 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
         $keyword = $request->get('search');
         $perPage = 25;
 
-
-        if (!empty($keyword)) {
+        if (! empty($keyword)) {
             $users = User::where('name', 'LIKE', "%$keyword%")
             ->latest()->paginate($perPage);
         } else {
             $users = User::latest()->paginate($perPage);
         }
-        
+
         return view('admin.users.index', compact('users'));
     }
 
@@ -53,7 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::orderBy('id')->pluck('name','name')->all();
+        $roles = Role::orderBy('id')->pluck('name', 'name')->all();
 
         return view('admin.users.create', compact('roles'));
     }
@@ -70,16 +69,16 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'roles' => 'required'
+            'roles' => 'required',
         ]);
-    
+
         $input = $request->all();
         $input['soft_password'] = $input['password'];
         $input['password'] = Hash::make($input['password']);
-    
+
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-    
+
         return redirect()->route('users.index')
             ->with('success', 'User created successfully.');
     }
@@ -121,32 +120,29 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'roles' => 'required'
+            'roles' => 'required',
         ]);
-    
-        $input = $request->all();
-        
 
-        if(!empty($input['password'])) { 
+        $input = $request->all();
+
+        if (! empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
-            $input = Arr::except($input, array('password'));    
+            $input = Arr::except($input, ['password']);
         }
 
-    
         $user = User::find($id);
         $user->update($input);
 
         DB::table('model_has_roles')
             ->where('model_id', $id)
             ->delete();
-    
+
         $user->assignRole($request->input('roles'));
-    
+
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully.');
     }

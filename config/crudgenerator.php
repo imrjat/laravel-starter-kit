@@ -67,7 +67,6 @@ return [
          * Add new stubs templates here if you need to, like action, datatable...
          * custom_template needs to be activated for this to work
          */
-    ]
-
+    ],
 
 ];

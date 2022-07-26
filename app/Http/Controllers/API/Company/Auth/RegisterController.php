@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\API\Company\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\Company;
-
+use Illuminate\Http\Request;
 use Validator;
 
 class RegisterController extends BaseController
@@ -31,14 +30,14 @@ class RegisterController extends BaseController
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = Company::create($input);
-        
+
         try {
-            $success['token'] =  $user->createToken('company', ['company'])->accessToken;
+            $success['token'] = $user->createToken('company', ['company'])->accessToken;
         } catch (\Throwable $th) {
             return $this->sendError($th->getMessage(), $validator->errors());
         }
 
-        $success['name'] =  $user->name;
+        $success['name'] = $user->name;
 
         return $this->sendResponse($success, 'User register successfully.');
     }

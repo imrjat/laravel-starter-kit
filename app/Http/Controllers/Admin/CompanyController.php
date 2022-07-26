@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Models\Company;
@@ -21,14 +21,14 @@ class CompanyController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
-        if (!empty($keyword)) {
+        if (! empty($keyword)) {
             $academic_years = Company::where('name', 'LIKE', "%$keyword%")
             ->latest()->paginate($perPage);
         } else {
             $academic_years = Company::latest()->paginate($perPage);
         }
 
-       // return view('admin..index', compact('academic_years'));
+        // return view('admin..index', compact('academic_years'));
     }
 
     /**

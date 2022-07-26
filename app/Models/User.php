@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -24,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'soft_password'
+        'soft_password',
     ];
 
     /**
@@ -48,14 +47,16 @@ class User extends Authenticatable
 
     // Logger
     protected static $logFillable = true;
+
     protected static $logAttributes = ['name', 'email', 'soft_password'];
+
     protected static $logOnlyDirty = true;
 
-    
     public function getDescriptionForEvent(string $eventName): string
     {
         $user_name = auth()->user()->name ?? '';
-        return "This User has been {$eventName} by " . $user_name;
+
+        return "This User has been {$eventName} by ".$user_name;
     }
 
     public function getActivitylogOptions(): LogOptions

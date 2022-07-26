@@ -18,10 +18,9 @@ class CreateSettingsTable extends Migration
             $table->string('name')->nullable()->index();
             $table->string('label')->nullable();
             $table->longText('value')->nullable();
-            $table->enum('type',['string','text','number','file'])->default('string');
+            $table->enum('type', ['string', 'text', 'number', 'file'])->default('string');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

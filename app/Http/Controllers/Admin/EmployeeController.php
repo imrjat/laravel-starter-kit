@@ -1,7 +1,8 @@
 <?php
-namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
@@ -20,14 +21,14 @@ class EmployeeController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
-        if (!empty($keyword)) {
+        if (! empty($keyword)) {
             $academic_years = Employee::where('name', 'LIKE', "%$keyword%")
             ->latest()->paginate($perPage);
         } else {
             $academic_years = Employee::latest()->paginate($perPage);
         }
 
-       // return view('admin..index', compact('academic_years'));
+        // return view('admin..index', compact('academic_years'));
     }
 
     /**

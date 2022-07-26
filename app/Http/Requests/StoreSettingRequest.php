@@ -26,7 +26,7 @@ class StoreSettingRequest extends FormRequest
         return [
 
             'name' => 'required',
-            'value' => 'required'
+            'value' => 'required',
         ];
     }
 }

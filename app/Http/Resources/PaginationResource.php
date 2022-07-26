@@ -14,7 +14,6 @@ class PaginationResource extends JsonResource
      */
     public function toArray($request): array
     {
-
         return [
             'current_page' => $this->currentPage(),
             'first_page_url' => $this->url(1),

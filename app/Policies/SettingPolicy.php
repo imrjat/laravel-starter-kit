@@ -4,15 +4,11 @@ namespace App\Policies;
 
 use App\Models\Setting;
 use App\Models\User;
-
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Gate;
 
 class SettingPolicy
 {
-    
     use HandlesAuthorization;
-
 
     /**
      * Determine whether the user can view any models.
@@ -20,14 +16,10 @@ class SettingPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-
     public function viewAny(User $user)
     {
-
-
         return $user->hasPermissionTo('setting-viewAny');
     }
-
 
     /**
      * Determine whether the user can view the model.
@@ -39,7 +31,6 @@ class SettingPolicy
     public function view(User $user, Setting $setting)
     {
         //
-
 
         return $user->hasPermissionTo('setting-view');
     }
@@ -55,7 +46,6 @@ class SettingPolicy
         //
 
         return $user->hasPermissionTo('setting-create');
-
     }
 
     /**
@@ -69,7 +59,6 @@ class SettingPolicy
     {
         //
         return $user->hasPermissionTo('setting-update');
-
     }
 
     /**
@@ -84,7 +73,6 @@ class SettingPolicy
         //
 
         return $user->hasPermissionTo('setting-delete');
-
     }
 
     /**
@@ -98,7 +86,6 @@ class SettingPolicy
     {
         //
         return $user->hasPermissionTo('setting-restore');
-
     }
 
     /**
@@ -112,6 +99,5 @@ class SettingPolicy
     {
         //
         return $user->hasPermissionTo('setting-forceDelete');
-
     }
 }

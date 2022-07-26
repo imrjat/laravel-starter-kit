@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Spatie\Permission\Models\Role;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class RoleTableSeeder extends Seeder
 {

@@ -36,7 +36,7 @@ class PermissionTableSeeder extends Seeder
             'role-forceDelete',
             'role-update',
             'role-store',
-            
+
             'permission-viewAny',
             'permission-create',
             'permission-edit',
@@ -57,11 +57,8 @@ class PermissionTableSeeder extends Seeder
             'setting-update',
             'setting-store',
 
-         
-
         ];
 
-     
         foreach ($data as $permission) {
             Permission::updateOrCreate(['name' => $permission]);
         }

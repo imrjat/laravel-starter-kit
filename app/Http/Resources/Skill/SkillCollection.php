@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Resources\Skill;
+
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class SkillCollection extends ResourceCollection
@@ -15,7 +16,7 @@ class SkillCollection extends ResourceCollection
     {
         return parent::toArray($request);
     }
- 
+
     /**
      * Get additional data that should be returned with the resource array.
      *
@@ -24,14 +25,9 @@ class SkillCollection extends ResourceCollection
      */
     public function with($request)
     {
-
-
         return [
-            'success'=>true,
-            'message'=>'Skills fetched successfully',
+            'success' => true,
+            'message' => 'Skills fetched successfully',
         ];
     }
-
-
-
 }

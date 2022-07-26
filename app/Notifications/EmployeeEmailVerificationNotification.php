@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Notifications;
 
 use Carbon\Carbon;
@@ -17,7 +18,7 @@ class EmployeeEmailVerificationNotification extends VerifyEmail
     /**
      * Get the notification's delivery channels.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -28,7 +29,7 @@ class EmployeeEmailVerificationNotification extends VerifyEmail
     /**
      * Get the mail representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return MailMessage
      */
     public function toMail($notifiable)
@@ -45,7 +46,7 @@ class EmployeeEmailVerificationNotification extends VerifyEmail
     /**
      * Get the array representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function toArray($notifiable)
@@ -63,5 +64,4 @@ class EmployeeEmailVerificationNotification extends VerifyEmail
             ['id' => $notifiable->getKey()]
         );
     }
-
 }

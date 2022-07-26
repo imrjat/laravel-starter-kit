@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\API\Employee\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\Employee;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
 
 class RegisterController extends BaseController
 {
@@ -33,7 +30,8 @@ class RegisterController extends BaseController
         $input['password'] = bcrypt($input['password']);
 
         $user = Employee::create($input)->sendEmailVerificationNotification();
-        $success['token'] =  $user->createToken('employee', ['employee'])->accessToken;
+        $success['token'] = $user->createToken('employee', ['employee'])->accessToken;
+
         return $this->sendResponse([], 'Account registered successfully.');
     }
 }
