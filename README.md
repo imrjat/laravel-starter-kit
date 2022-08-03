@@ -1,5 +1,4 @@
-# Laravel 9.x - Multi Authentication API with Example
-**A Laravel 9.x with Bootstrap 4.x project.** In this Starter Kit, I would like share with you build a multiple guards authentication api in laravel 9. I have create multiple authentication api in laravel 9. This project will give you multiple authentication guard drivers (including API) in laravel 9. how to setup multi-auth for laravel 9 apis..
+# Laravel 9 starter kit with Bootstrap 4,API Multi Auth and some package that provide you to build website more faster.
 
 Please let me know your feedback and comments.
 
