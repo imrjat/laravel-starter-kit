@@ -11,17 +11,8 @@
                     <h1> Permission</h1>
                 </div>
                 <div class="col-sm-3">
-                    <a class="btn btn-success btn-sm" href="{{ url('/permissions') }}">Back</a>
-                    @can('user-edit')
-                        <a class="btn btn-primary btn-sm" href="{{ url('/permissions/' . $permission->id . '/edit') }}">Edit</a>
-                    @endcan
-                    @can('user-delete')
-                        <form method="POST" action="{{ url('permissions' . '/' . $permission->id) }}" accept-charset="UTF-8" style="display:inline">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger btn-sm" title="Delete permission" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                            </form>
-                    @endcan
+                    <a class="btn btn-success btn-xs" href="{{ route('permissions.index') }}"> <i class="fa fa-arrow-left"> </i> Back</a>
+                   
                 </div>
                 <div class="col-sm-5">
                   
@@ -47,7 +38,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $permission->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $permission->name }} </td></tr>
+                                    <tr><th> Name </th><td> {{ Str::title(Str::replace('-',' ',Str::replace('_',' ',$permission->name))) }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

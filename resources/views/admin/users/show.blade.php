@@ -11,13 +11,13 @@
                     <h1>User</h1>
                 </div>
                 <div class="col-sm-3">
-                    <a class="btn btn-success btn-sm" href="{{ route('users.show', $user->id) }}">Show</a>
+                    <a class="btn btn-success btn-xs" href="{{ route('users.show', $user->id) }}">Show</a>
                     @can('user-edit')
-                        <a class="btn btn-primary btn-sm" href="{{ route('users.edit', $user->id) }}">Edit</a>
+                        <a class="btn btn-primary btn-xs" href="{{ route('users.edit', $user->id) }}">Edit</a>
                     @endcan
                     @can('user-delete')
                         {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
-                        {!! Form::submit('Delete', ['onclick' => 'return confirm(&quot; : Are you sure are you want to delete this? &quot;)', 'class' => 'btn btn-danger btn-sm']) !!}
+                        {!! Form::submit('Delete', ['onclick' => 'return confirm(&quot; : Are you sure are you want to delete this? &quot;)', 'class' => 'btn btn-danger btn-xs']) !!}
 
                         {!! Form::close() !!}
                     @endcan

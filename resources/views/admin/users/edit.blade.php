@@ -9,16 +9,7 @@
                     <h1>System Users</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        @can('user-create')
-
-                            <div>
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
-                                    type="button"> <i class="fa fa-plus"></i> Add new
-                                    member</a>
-                            </div>
-                        @endcan
-                    </ol>
+                  
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -33,7 +24,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PATCH']) !!}
+                            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PATCH',"enctype"=>"multipart/form-data"]) !!}
 
                             @include('admin.users.form')
 

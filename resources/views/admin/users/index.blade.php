@@ -14,7 +14,7 @@
                     <ol class="breadcrumb float-sm-right">
                         @can('user-create')
                             <div>
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-xs text-white mb-0 me-0"
                                     type="button"> <i class="fa fa-plus"></i> Add new
                                     member</a>
                             </div>
@@ -30,10 +30,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Users List</h3>
+                            <h3 class="card-title">Total <b>{{$users->total() }}</b> records</h3>
 
                             <div class="card-tools">
-                                    {!! Form::open(['method' => 'GET', 'url' => '/users', 'role' => 'search'])  !!}
+                                    {!! Form::open(['method' => 'GET', 'url' =>  route('users.index') , 'role' => 'search'])  !!}
 
                                 <div class="input-group input-group-sm" style="width: 150px;">
 
@@ -80,15 +80,15 @@
                                                     class="badge badge-{{ $user->status == 'active' ? 'success' : 'danger' }}">{{ $user->status }}</label>
                                             </td>
                                             <td>
-                                                <a class="btn btn-success btn-sm"
+                                                <a class="btn btn-success btn-xs"
                                                     href="{{ route('users.show', $user->id) }}">Show</a>
                                                 @can('user-edit')
-                                                    <a class="btn btn-primary btn-sm"
+                                                    <a class="btn btn-primary btn-xs"
                                                         href="{{ route('users.edit', $user->id) }}">Edit</a>
                                                 @endcan
                                                 @can('user-delete')
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
-                                                    {!! Form::submit('Delete', ['onclick' => 'return confirm(&quot; : Are you sure are you want to delete this? &quot;)', 'class' => 'btn btn-danger btn-sm']) !!}
+                                                    {!! Form::submit('Delete', ['onclick' => 'return confirm(&quot; : Are you sure are you want to delete this? &quot;)', 'class' => 'btn btn-danger btn-xs']) !!}
 
                                                     {!! Form::close() !!}
                                                 @endcan

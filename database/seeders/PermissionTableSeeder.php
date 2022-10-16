@@ -56,7 +56,6 @@ class PermissionTableSeeder extends Seeder
             'setting-forceDelete',
             'setting-update',
             'setting-store',
-
         ];
 
         foreach ($data as $permission) {

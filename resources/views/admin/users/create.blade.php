@@ -10,15 +10,13 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('user-create')
 
-                            <div>
-                      
+                        <div>
+                            <a href="{{ route('users.index') }}" class="btn btn-info btn-xs text-white mb-0 me-0"
+                                type="button"> <i class="fa fa-arrow-left"></i> Back</a>
 
-                            <a href="{{ url('/users') }}" class="btn btn-info btn-sm text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
+                        </div>
 
-                            </div>
-                        @endcan
                     </ol>
                 </div>
             </div>

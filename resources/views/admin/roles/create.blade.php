@@ -10,11 +10,11 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('roll-create')
+                    
                         <div>
-                            <a href="{{ url('/admin/roles') }}" class="btn btn-info btn-sm text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
+                            <a href="{{ route('roles.index') }}" class="btn btn-info btn-xs text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
                         </div>
-                        @endcan
+                      
                     </ol>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form method="POST" action="{{ url('/roles') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('roles.store') }}" enctype="multipart/form-data">
                                 
                                 {{ csrf_field() }}
                                 @include ('admin.roles.form', ['formMode' => 'create'])

@@ -12,13 +12,13 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        {{-- @can('user-create')
+                        @can('user-create')
                             <div>
-                                <a href="{{  url('/permissions/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
+                                <a href="{{  route('permissions.create') }}" class="btn btn-primary btn-xs text-white mb-0 me-0"
                                     type="button"> <i class="fa fa-plus"></i> Add new
                                     Permissions</a>
                             </div>
-                        @endcan --}}
+                        @endcan
                     </ol>
                 </div>
             </div>
@@ -30,10 +30,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Permissions List</h3>
+                            <h3 class="card-title">Total <b>{{$permissions->total() }}</b> records</h3>
 
                             <div class="card-tools">
-                                    {!! Form::open(['method' => 'GET', 'url' => '/permissions', 'role' => 'search'])  !!}
+                                    {!! Form::open(['method' => 'GET', 'url' =>  route('permissions.index') , 'role' => 'search'])  !!}
 
                                 <div class="input-group input-group-sm" style="width: 150px;">
 
@@ -55,8 +55,7 @@
                             <table class="table table-head-fixed text-nowrap">
                                      <thead>
                         <tr>
-                            <th>#</th><th>Permission Name</th>
-                            {{-- <th>Actions</th> --}}
+                            <th>#</th><th>Permission Name</th><th>Actions</th>
 
                         </tr>
                     </thead>
@@ -66,22 +65,22 @@
                             <tr>
                                 <td>{{ (($permissions->currentPage() - 1 ) * $permissions->perPage() ) + $loop->iteration }}</td>
 
-                                <td>{{ $item->name }}</td>
-                                {{-- <td>
-                                    <a href="{{ url('/permissions/' . $item->id) }}" title="View permission"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                    @can('permission-edit')
-                                    <a href="{{ url('/permissions/' . $item->id . '/edit') }}" title="Edit permission"><button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button></a>
-                                    @endcan
+                                <td>{{ Str::title(Str::replace('-',' ',Str::replace('_',' ',$item->name))) }}</td>
+                                <td>
+                                    <a href="{{  route('permissions.show', $item->id) }}" title="View permission"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                    {{-- @can('permission-edit')
+                                    <a href="{{ route('permissions.edit', $item->id ) }}" title="Edit permission"><button class="btn btn-primary btn-xs"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button></a>
+                                    @endcan --}}
 
-                                    @can('permission-delete')
-                                    <form method="POST" action="{{ url('/permissions' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                    {{-- @can('permission-delete')
+                                    <form method="POST" action="{{ route('permissions.destroy',  $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button type="submit"  class="btn btn-danger btn-sm" title="Delete permission" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                        <button type="submit"  class="btn btn-danger btn-xs" title="Delete permission" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                                     </form>
-                                    @endcan
+                                    @endcan --}}
 
-                                </td> --}}
+                                </td>
                             </tr>
                         @endforeach
 
@@ -89,7 +88,7 @@
                         </tbody>
                         </table>
                            <br>
-                        <div class="pagination-wrapper"> {!! $permissions->appends(['search' => Request::get('search')])->render() !!} </div>
+                        <div class="pagination-wrapper"> {!! $permissions->appends($_GET)->links() !!} </div>
 
                         </div>
                         <!-- /.card-body -->

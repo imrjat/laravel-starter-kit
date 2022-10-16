@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
@@ -24,5 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('permissions', PermissionController::class);
         Route::post('settings/update_records', [SettingController::class, 'update_records'])->name('update_records');
         Route::resource('settings', SettingController::class);
+
+
     });
 });

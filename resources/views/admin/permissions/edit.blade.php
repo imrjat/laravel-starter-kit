@@ -12,7 +12,7 @@
                     <ol class="breadcrumb float-sm-right">
                         @can('remove-create')
                         <div>
-                            <a href="{{ url('/permissions') }}" class="btn btn-info btn-sm text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
+                            <a href="{{ route('permissions.index') }}" class="btn btn-info btn-xs text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
                         </div>
                         @endcan
                     </ol>
@@ -30,7 +30,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                       <form method="POST" action="{{ url('/permissions/' . $permission->id) }}" enctype="multipart/form-data">
+                       <form method="POST" action="{{ route('permissions.update',$permission->id) }}" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
                                 @include ('admin.permissions.form', ['formMode' => 'edit'])

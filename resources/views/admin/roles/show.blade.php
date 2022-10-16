@@ -11,17 +11,20 @@
                     <h1> Role</h1>
                 </div>
                 <div class="col-sm-3">
-                    <a class="btn btn-success btn-sm" href="{{ url('/admin/roles') }}">Back</a>
-                    @can('user-edit')
-                        <a class="btn btn-primary btn-sm" href="{{ url('/admin/roles/' . $role->id . '/edit') }}">Edit</a>
+                    <a class="btn btn-success btn-xs" href="{{  route('roles.index') }}"> <i class="fa fa-arrow-left"> </i> Back</a>
+                   
+                    @can('role-edit')
+                    <a href="{{route('roles.edit', $role->id ) }}" title="Edit role"><button class="btn btn-primary btn-xs"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button></a>
                     @endcan
-                    @can('user-delete')
-                        <form method="POST" action="{{ url('/admin/roles' . '/' . $role->id) }}" accept-charset="UTF-8" style="display:inline">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger btn-sm" title="Delete role" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                            </form>
+
+                    @can('role-delete')
+                    <form method="POST" action="{{ route('roles.destroy', $role->id) }}" accept-charset="UTF-8" style="display:inline">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button type="submit"  class="btn btn-danger btn-xs" title="Delete role" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    </form>
                     @endcan
+
                 </div>
                 <div class="col-sm-5">
                   

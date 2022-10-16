@@ -4,12 +4,8 @@ namespace DummyNamespace;
 
 use DummyRootNamespaceHttp\Requests;
 use DummyRootNamespaceHttp\Controllers\Controller;
-
 use DummyRootNamespace{{modelNamespace}}{{modelName}};
 use Illuminate\Http\Request;
-
-use App\Http\Requests\Store{{modelName}}Request;
-use App\Http\Requests\Update{{modelName}}Request;
 
 class DummyClass extends Controller
 {
@@ -25,7 +21,7 @@ class DummyClass extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource({{modelName}}::class);
+        //$this->authorizeResource({{modelName}}::class);
     }
 
 
@@ -65,7 +61,7 @@ class DummyClass extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Store{{modelName}}Request $request)
+    public function store(Request $request)
     {
         {{validationRules}}
         $requestData = $request->all();
@@ -109,7 +105,7 @@ class DummyClass extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Update{{modelName}}Request $request, {{modelName}} ${{crudNameSingular}})
+    public function update(Request $request, {{modelName}} ${{crudNameSingular}})
     {
         {{validationRules}}
         $requestData = $request->all();

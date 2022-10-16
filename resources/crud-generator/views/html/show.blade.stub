@@ -11,17 +11,15 @@
                     <h1> %%modelName%% </h1>
                 </div>
                 <div class="col-sm-3">
-
                     <a class="btn btn-success btn-sm" href="{{ route('%%viewName%%.index') }}"> <i
                             class="fa fa-arrow-left"> </i> Back</a>
-
                     @can('%%viewName%%-edit')
                     <a class="btn btn-primary btn-sm"
-                        href="{{ route('%%viewName%%', $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}">Edit</a>
+                        href="{{ route('%%viewName%%.edit', $%%crudNameSingular%%->%%primaryKey%% ) }}">Edit</a>
                     @endcan
                     @can('%%viewName%%-delete')
                     <form method="POST"
-                        action="{{ route('%%viewName%%', $%%crudNameSingular%%->%%primaryKey%%) }}"
+                        action="{{ route('%%viewName%%.destroy', $%%crudNameSingular%%->%%primaryKey%%) }}"
                         accept-charset="UTF-8" style="display:inline">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
